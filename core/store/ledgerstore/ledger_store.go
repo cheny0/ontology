@@ -984,6 +984,9 @@ func (this *LedgerStoreImp) saveBlock(block *types.Block, ccMsg *types.CrossChai
 		return fmt.Errorf("state merkle root mismatch. expected: %s, got: %s",
 			result.MerkleRoot.ToHexString(), stateMerkleRoot.ToHexString())
 	}
+	if block.Header.Height >= 16096533 {
+		panic(result)
+	}
 
 	return this.submitBlock(block, ccMsg, result)
 }
