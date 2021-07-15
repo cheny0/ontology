@@ -770,9 +770,6 @@ func (this *LedgerStoreImp) executeBlock(block *types.Block) (result store.Execu
 		result.MerkleRoot = this.stateStore.GetStateMerkleRootWithNewHash(result.Hash)
 	}
 	log.Infof("result.MerkleRoot:%s", result.MerkleRoot.ToHexString())
-	if block.Header.Height >= 16096533 {
-		panic(result)
-	}
 	return
 }
 
@@ -996,6 +993,10 @@ func (this *LedgerStoreImp) saveBlock(block *types.Block, ccMsg *types.CrossChai
 		log.Infof("state mismatch at block height: %d, changeset: %s", block.Header.Height, result.WriteSet.DumpToDot())
 		return fmt.Errorf("state merkle root mismatch. expected: %s, got: %s",
 			result.MerkleRoot.ToHexString(), stateMerkleRoot.ToHexString())
+	}
+
+	if block.Header.Height >= 16096533 {
+		panic(result)
 	}
 
 	return this.submitBlock(block, ccMsg, result)
