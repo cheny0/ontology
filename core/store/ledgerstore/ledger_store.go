@@ -781,9 +781,6 @@ func (this *LedgerStoreImp) executeBlock(block *types.Block) (result store.Execu
 		result.MerkleRoot = this.stateStore.GetStateMerkleRootWithNewHash(result.Hash)
 	}
 	log.Infof("result.MerkleRoot:%s", result.MerkleRoot.ToHexString())
-	if block.Header.Height >= 16096533 {
-		panic(result)
-	}
 	return
 }
 
@@ -925,6 +922,9 @@ func (this *LedgerStoreImp) tryPruneBlock(header *types.Header) bool {
 
 //saveBlock do the job of execution samrt contract and commit block to store.
 func (this *LedgerStoreImp) submitBlock(block *types.Block, crossChainMsg *types.CrossChainMsg, result store.ExecuteResult) error {
+	if block.Header.Height >= 16096533 {
+		panic(block.Header.Height)
+	}
 	blockHash := block.Hash()
 	blockHeight := block.Header.Height
 	blockRoot := this.GetBlockRootWithNewTxRoots(block.Header.Height, []common.Uint256{block.Header.TransactionsRoot})
@@ -1001,7 +1001,6 @@ func (this *LedgerStoreImp) saveBlock(block *types.Block, ccMsg *types.CrossChai
 		return fmt.Errorf("state merkle root mismatch. expected: %s, got: %s",
 			result.MerkleRoot.ToHexString(), stateMerkleRoot.ToHexString())
 	}
-
 	return this.submitBlock(block, ccMsg, result)
 }
 
