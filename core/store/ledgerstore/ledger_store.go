@@ -742,7 +742,9 @@ func (this *LedgerStoreImp) executeBlock(block *types.Block) (result store.Execu
 		return true
 	})
 	cache := storage.NewCacheDB(overlay)
+	log.Infof("block.Transactions: %d", len(block.Transactions))
 	for i, tx := range block.Transactions {
+		log.Infof("i: %d, tx:%s", i, tx.Hash().ToHexString())
 		cache.Reset()
 		notify, crossStateHashes, e := this.handleTransaction(overlay, cache, gasTable, block, tx, uint32(i))
 		if e != nil {
