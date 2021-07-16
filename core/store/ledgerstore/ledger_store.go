@@ -742,7 +742,7 @@ func (this *LedgerStoreImp) executeBlock(block *types.Block) (result store.Execu
 		return true
 	})
 	cache := storage.NewCacheDB(overlay)
-	log.Infof("block.Transactions: %d", len(block.Transactions))
+	log.Infof("block.Transactions: %d, blockHeight: %d", len(block.Transactions), block.Header.Height)
 	for i, tx := range block.Transactions {
 		log.Infof("i: %d, tx:%s", i, tx.Hash().ToHexString())
 		cache.Reset()
