@@ -72,11 +72,10 @@ ontology目前已支持EVM合约，开发者可以在ontology链上部署和调�
 
 ontology目前已完全支持EVM合约，并且已支持ethereum链的节点调用方式，也就是说我们可以使用ethereum相关的合约开发工具在ontology链上开发部署测试EVM合约，比如Truffle, Remix,
 Web3js等工具。
-`go-ethereum`项目里面的`ethclient`包可以用来直接和ontology节点上的EVM合约交互。
 
 ## 2 部署EVM合约到ontology链
 
-ethereum合约可以用solidity语言开发，[solidity教程](https://docs.soliditylang.org/en/v0.8.6/)
+EVM合约可以用solidity语言开发，[solidity教程](https://docs.soliditylang.org/en/v0.8.6/)，可以复用现有的以太坊合约框架开发和部署。
 
 ### 2.1 使用Remix工具
 
@@ -462,9 +461,9 @@ Step 2:
 
 现在你可以使用你刚才创建的合约实例调用任何你想调用的函数
 
-注: - 你可以使用 `send()` 函数调用合约来改变合约状态
-
-​ - 调用 `call()` 函数完成合约的预执行操作
+注: 
+ - 你可以使用 `send()` 函数调用合约来改变合约状态
+ - 调用 `call()` 函数完成合约的预执行操作
 
 **Calling `call()` Functions**
 
