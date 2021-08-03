@@ -94,33 +94,7 @@ EVM合约可以用solidity语言开发，[solidity教程](https://docs.solidityl
 
 ![image-20210526143301031](./image-20210526143301031.png)
 
-```solidity
-// Specifies that the source code is for a version
-// of Solidity greater than 0.5.10
-pragma solidity ^0.5.10;
-
-// A contract is a collection of functions and data (its state)
-// that resides at a specific address on the Ethereum blockchain.
-contract HelloWorld {
-
-    // The keyword "public" makes variables accessible from outside a contract
-    // and creates a function that other contracts or SDKs can call to access the value
-    string public message;
-
-    // A special function only run during the creation of the contract
-    constructor(string memory initMessage) public {
-        // Takes a string value and stores the value in the memory data storage area,
-        // setting `message` to that value
-        message = initMessage;
-    }
-
-    // A publicly accessible function that takes a string as a parameter
-    // and updates `message`
-    function update(string memory newMessage) public {
-        message = newMessage;
-    }
-}
-```
+`helloworld`源码请[参考](../contract-demo/helloworlddemo/helloworld.sol)
 
 #### 2.1.2 编译合约
 
@@ -149,7 +123,7 @@ remix环境如下图
 
 ### 2.2 使用Truffle
 
-完整的测试代码在[这里](https://github.com/lucas7788/truffledemo)
+完整的测试代码在[这里](../contract-demo/truffledemo)
 
 #### 2.2.1 安装truffle
 
@@ -361,7 +335,7 @@ RedPacket deployed to: 0xB105388ac7F019557132eD6eA90fB4BAaFde6E81
 
 |tokenName|tokenAddress|
 |:---|:---|
-|ONG|0x00000000000000000000000000000000000000002|
+|ONG|0x00000000000000000000000000000000000000000|
 
 ### 3.3 oep4资产列表
 
@@ -593,7 +567,7 @@ function receivePacket(uint packetId) public payable returns (bool) {
 }
 ```
 
-[合约完整的代码](https://github.com/lucas7788/hardhatdemo/blob/master/contracts/Redpacket.sol)
+[合约完整的代码](../contract-demo/hardhatdemo/contracts/Redpacket.sol)
 
 ### 6.3 使用hardhat编译和测试合约
 
@@ -644,7 +618,7 @@ accounts字段指定的私钥数组，对应的地址需要有测试网的ONG,�
 
 把之前的红包合约代码文件放到 `contracts`文件夹下，为了支持ERC20的转账，我们还需要
 `EIP20Interface.sol`, `UniversalERC20.sol`, 和 `TokenDemo.sol`
-文件，可以从[此处](https://github.com/lucas7788/hardhatdemo/tree/master/contracts)下载相关文件
+文件，可以从[此处](../contract-demo/hardhatdemo/contracts)下载相关文件
 
 #### 6.3.4 在test文件夹下添加测试代码
 
