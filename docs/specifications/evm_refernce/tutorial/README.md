@@ -1,4 +1,4 @@
-# Ontology支持EVM的介绍
+# Ontology支持EVM 的介绍
 
 ontology目前已支持EVM合约，开发者可以在ontology链上部署和调用EVM合约, 并且支持ethereum相关的合约调用工具如web3js等。
 
